@@ -1,7 +1,5 @@
 package com.bibliotheque.web.beans;
 
-import org.apache.catalina.mbeans.RoleMBean;
-
 import java.util.List;
 
 public class UtilisateurBean {
@@ -17,8 +15,6 @@ public class UtilisateurBean {
 
     private String numeroDeTelephone;
 
-    private String numCarteBibliotheque;
-
     private String mail;
 
     private String motDePasse;
@@ -26,6 +22,22 @@ public class UtilisateurBean {
     private List<RoleBean> roles;
 
     private List<LivreBean> livresList;
+
+    public List<RoleBean> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<RoleBean> roles) {
+        this.roles = roles;
+    }
+
+    public List<LivreBean> getLivresList() {
+        return livresList;
+    }
+
+    public void setLivresList(List<LivreBean> livresList) {
+        this.livresList = livresList;
+    }
 
     public int getId() {
         return id;
@@ -67,13 +79,6 @@ public class UtilisateurBean {
         this.numeroDeTelephone = numeroDeTelephone;
     }
 
-    public String getNumCarteBibliotheque() {
-        return numCarteBibliotheque;
-    }
-
-    public void setNumCarteBibliotheque(String numCarteBibliotheque) {
-        this.numCarteBibliotheque = numCarteBibliotheque;
-    }
 
     public String getMail() {
         return mail;
@@ -99,7 +104,6 @@ public class UtilisateurBean {
                 ", prenom='" + prenom + '\'' +
                 ", adresse='" + adresse + '\'' +
                 ", numeroDeTelephone='" + numeroDeTelephone + '\'' +
-                ", numCarteBibliotheque='" + numCarteBibliotheque + '\'' +
                 ", mail='" + mail + '\'' +
                 ", motDePasse='" + motDePasse + '\'' +
                 '}';

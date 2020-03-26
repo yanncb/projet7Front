@@ -10,12 +10,10 @@
 <div class="row">
 
 
-    <div th:each="produit : ${livres}" class="col-md-4 my-1">
-        <li></li><a th:href="@{|/details-livre/${livres.id}|}">
-            <p th:text="${livres.nom}"></p>
-            <p th:text="${livres.auteur}"></p>
-            <p th:text="${livres.nom}"></p>
-            <a href="reserverLivre.html" th:href="@{reserverLivre}">Reserver un livre !</a>
+    <div th:each="livre : ${livres}" class="col-md-4 my-1">
+<!--       <a th:href="@{/details-livre/{id}(id=${livre.id})}">-->
+            <p th:text="${livre.titre}"></p>
+            <p th:text="${livre.auteur}"></p>
         </a>
     </div>
 </div>

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Recherche d'ouvrages</title>
+    <title th:text="#titre">Recherche d'ouvrages</title>
 </head>
 <body>
 <div th:insert="header.html"/>
@@ -16,7 +16,7 @@
 
     <div class="input-group mb-3">
         <div class="input-group-prepend">
-            <span class="input-group-text" id="titre">Titre</span>
+            <span class="input-group-text" id="titre">Titre du livre</span>
         </div>
         <input path="titre" type="text" class="form-control" autofocus="true" aria-label="Default"
                aria-describedby="inputGroup-sizing-default"/>
@@ -33,29 +33,29 @@
     <button class="btn btn-primary btn-lg btn-block" type="submit">Search</button>
 </div>>
 
-<table class="table  table-bordered">
-    <tr>
-        <th>Titre du livre</th>
-        <th>Auteur</th>
-        <th>Nombres d'exemplaires disponible</th>
-    </tr>
-<!--//TODO A FINIR-->
-    <forEach items="${resultatSites}" var="site">
-        <tr>
-            <td><a href="/site/${site.id}">${site.nom}</a></td>
-            <td>${site.pays}</td>
-            <td><forEach items="${site.secteurs}" var="secteur">
-                <forEach items="${secteur.voieList}" var="voie">
-                    <forEach items="${voie.longueurlist}" var="longueur">
-                        ${longueur.cotation}<br/>
-                    </forEach>
-                </forEach>
-            </forEach></td>
-            <td> ${site.nbSecteurs()}</td>
-        </tr>
-    </forEach>
+<!--<table class="table  table-bordered">-->
+<!--    <tr>-->
+<!--        <th>Titre du livre</th>-->
+<!--        <th>Auteur</th>-->
+<!--        <th>Nombres d'exemplaires disponible</th>-->
+<!--    </tr>-->
+<!--&lt;!&ndash;//TODO A FINIR&ndash;&gt;-->
+<!--    <forEach items="${resultatSites}" var="site">-->
+<!--        <tr>-->
+<!--            <td><a href="/site/${site.id}">${site.nom}</a></td>-->
+<!--            <td>${site.pays}</td>-->
+<!--            <td><forEach items="${site.secteurs}" var="secteur">-->
+<!--                <forEach items="${secteur.voieList}" var="voie">-->
+<!--                    <forEach items="${voie.longueurlist}" var="longueur">-->
+<!--                        ${longueur.cotation}<br/>-->
+<!--                    </forEach>-->
+<!--                </forEach>-->
+<!--            </forEach></td>-->
+<!--            <td> ${site.nbSecteurs()}</td>-->
+<!--        </tr>-->
+<!--    </forEach>-->
 
-</table>
+<!--</table>-->
 </di>
 </body>
 </html>

@@ -1,13 +1,11 @@
 package com.bibliotheque.web.beans;
 
-import java.util.Date;
 import java.util.List;
 
-public class LivreBean {
+public class BibliothequeBean {
 
     private int id;
-    private String titre;
-    private String auteur;
+    private String nom;
 
     private List<ExemplaireBean> exemplaireList;
 
@@ -27,30 +25,19 @@ public class LivreBean {
         this.id = id;
     }
 
-    public String getTitre() {
-        return titre;
+    public String getNom() {
+        return nom;
     }
 
-    public void setTitre(String titre) {
-        this.titre = titre;
+    public void setNom(String nom) {
+        this.nom = nom;
     }
-
-    public String getAuteur() {
-        return auteur;
-    }
-
-    public void setAuteur(String auteur) {
-        this.auteur = auteur;
-    }
-
-
 
     @Override
     public String toString() {
-        return "LivreBean{" +
+        return "BibliothequeBean{" +
                 "id=" + id +
-                ", titre='" + titre + '\'' +
-                ", auteur='" + auteur + '\'' +
+                ", nom='" + nom + '\'' +
                 '}';
     }
 }
