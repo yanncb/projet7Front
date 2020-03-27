@@ -1,14 +1,13 @@
 package com.bibliotheque.web.controller;
 
+import com.bibliotheque.web.beans.ExemplaireBean;
 import com.bibliotheque.web.beans.LivreBean;
 import com.bibliotheque.web.beans.Recherche;
 import com.bibliotheque.web.proxies.MServiceBack;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,18 +17,31 @@ public class RechercheController {
     @Autowired
     private MServiceBack rechercherLivres;
 
-    @RequestMapping("/recherche")
-    public String recherche(Model model) {
-        model.addAttribute("recherche", new Recherche());
-        return "/recherche";
-    }
+//    @RequestMapping("/recherche")
+//    public String recherche(Model model) {
+//        model.addAttribute("recherche", new Recherche());
+//        return "/recherche";
+//    }
+//
+//    @PostMapping("/recherche")
+//    public String recherche(Model model, @ModelAttribute("recherche") Recherche recherche) {
+//        List<LivreBean> livres = rechercherLivres.rechercherLivres(recherche);
+//
+//        model.addAttribute("resultat",livres);
+//        return "recherche";
+//    }
 
+    @GetMapping("/recherche")
+    public String rechercherUnLivre(Model model, @RequestParam(name = "motCle", defaultValue = "") String motCle){
 
-    @PostMapping("/recherche")
-    public String recherche(Model model, @ModelAttribute("recherche") Recherche recherche) {
-        List<LivreBean> livres = rechercherLivres.rechercherLivres(recherche);
-
-        model.addAttribute("resultat",livres);
+        if (motCle.isEmpty()){
+            List<LivreBean> livreBeanList = rechercherLivres.listeDesLivres();
+            model.addAttribute("livreBeanList", livreBeanList);
+        } else if (!motCle.isEmpty()){
+            List<LivreBean> livreBeanList = rechercherLivres.rechercherLivres(motCle);
+            model.addAttribute("livreBeanList", livreBeanList);
+            model.addAttribute("motCle", motCle);
+        }
         return "/recherche";
     }
 }

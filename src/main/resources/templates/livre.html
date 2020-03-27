@@ -2,19 +2,24 @@
 <html lang="fr" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Livres</title>
+    <title>Livre</title>
 </head>
 <body>
-<h1 class="text-center">Application de ma bibliotheque</h1>
+<h1 class="text-center">Détails du livre <p th:text="${livre.titre}"/></h1>
 
 <div class="row">
 
-    <div th:each="livre : ${livres}" class="col-md-4 my-1">
         <a th:href="@{/details-livre/{id}(id=${livre.id})}">
             <p th:text="${livre.titre}"></p>
             <p th:text="${livre.auteur}"></p>
         </a>
     </div>
+
+<div th:each="exemplaire : ${exemplaire}" class="col-md-4 my-1">
+        <p th:text="${exemplaire.nbDispo}"></p>
+        <p th:text="${exemplaire.id}"></p>
+    </a>
+</div>
 
 </div>
 
