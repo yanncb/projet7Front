@@ -5,24 +5,28 @@
     <title>Livre</title>
 </head>
 <body>
-<h1 class="text-center">Détails du livre <p th:text="${livre.titre}"/></h1>
+    <div th:insert="header.html"/>
+    <h1 class="text-center">Détails du livre <p th:text="${livre.titre}"/></h1>
+        <div class="cstyle">
+            <table class="table listTableDeco">
+                <thead>
+                    <tr>
+                        <th>Titre :</th>
+                        <th>Nom de l'Auteur</th>
+                        <th>Nombre d'exemplaire disponible</th>
+                    </tr>
+                </thead>
 
-<div class="row">
-
-        <a th:href="@{/details-livre/{id}(id=${livre.id})}">
-            <p th:text="${livre.titre}"></p>
-            <p th:text="${livre.auteur}"></p>
-        </a>
+                <tbody>
+                    <tr th:href="@{/details-livre/{id}(id=${livre.id})}" th:each="exemplaire : ${exemplaire}">
+                        <td th:text="${livre.titre}"></td>
+                        <td th:text="${livre.auteur}"></td>
+                        <td th:text="${exemplaire.nbDispo}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-
-<div th:each="exemplaire : ${exemplaire}" class="col-md-4 my-1">
-        <p th:text="${exemplaire.nbDispo}"></p>
-        <p th:text="${exemplaire.id}"></p>
-    </a>
-</div>
-
-</div>
-
 </body>
 
 </html>

@@ -26,42 +26,18 @@
                 <th>Nom de l'Auteur</th>
             </tr>
             </thead>
-                    <tbody>
-                    <tr th:each="livre:${livreBeanList}">
-                        <td><a th:href="@{/livre/{id}(id=${livre.id})}" th:text="${livre.titre}"></a></td>
-                        <td th:text="${livre.auteur}"></td>
-                    </tr>
-                    </tbody>
+            <tbody>
+            <tr th:each="livre:${livreBeanList}">
+                <td><a th:href="@{/livre/{id}(id=${livre.id})}" th:text="${livre.titre}"></a></td>
+                <td th:text="${livre.auteur}"></td>
+            </tr>
+            </tbody>
         </table>
     </div>
     <div th:if="${livreBeanList.isEmpty()}">
         <p>Aucun livres ne correspond à vos critères</p>
     </div>
 </div>
-
-<!--<table class="table  table-bordered">-->
-<!--    <tr>-->
-<!--        <th>Titre du livre</th>-->
-<!--        <th>Auteur</th>-->
-<!--        <th>Nombres d'exemplaires disponible</th>-->
-<!--    </tr>-->
-<!--&lt;!&ndash;//TODO A FINIR&ndash;&gt;-->
-<!--    <forEach items="${resultatSites}" var="site">-->
-<!--        <tr>-->
-<!--            <td><a href="/site/${site.id}">${site.nom}</a></td>-->
-<!--            <td>${site.pays}</td>-->
-<!--            <td><forEach items="${site.secteurs}" var="secteur">-->
-<!--                <forEach items="${secteur.voieList}" var="voie">-->
-<!--                    <forEach items="${voie.longueurlist}" var="longueur">-->
-<!--                        ${longueur.cotation}<br/>-->
-<!--                    </forEach>-->
-<!--                </forEach>-->
-<!--            </forEach></td>-->
-<!--            <td> ${site.nbSecteurs()}</td>-->
-<!--        </tr>-->
-<!--    </forEach>-->
-
-<!--</table>-->
 </di>
 </body>
 </html>
