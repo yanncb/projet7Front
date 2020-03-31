@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<div th:insert="header.html"/>
+
+<h1>S'identifier</h1>
+<th:form method="POST" modelAttribute="utilisateur" action="/login">
+
+    <th:input type="text" path="username" id="username" class="form-control form-control-sm mb-3"
+              placeholder="Pseudo"/>
+
+    <th:input type="password" path="password" id="password" class="form-control form-control-sm mb-3"
+              placeholder="Mot De Passe"/>
+
+
+    <input type="submit" class="btn btn-success" value="Valider"/>
+    <a class="btn btn-danger" href="/">Cancel</a>
+</th:form>
+</div>
+
+</body>
+</html>

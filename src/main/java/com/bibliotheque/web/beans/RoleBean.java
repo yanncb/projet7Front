@@ -1,6 +1,8 @@
 package com.bibliotheque.web.beans;
 
-public class RoleBean {
+import org.springframework.security.core.GrantedAuthority;
+
+public class RoleBean implements GrantedAuthority {
 
     private int id;
     private String rolNom;
@@ -27,5 +29,10 @@ public class RoleBean {
                 "id=" + id +
                 ", rolNom='" + rolNom + '\'' +
                 '}';
+    }
+
+    @Override
+    public String getAuthority() {
+        return rolNom;
     }
 }

@@ -1,7 +1,9 @@
 package com.bibliotheque.web.proxies;
 
+import com.bibliotheque.web.Service.UtilisateurService;
 import com.bibliotheque.web.beans.ExemplaireBean;
 import com.bibliotheque.web.beans.LivreBean;
+import com.bibliotheque.web.beans.UtilisateurBean;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,4 +29,7 @@ public interface MServiceBack {
 
     @PostMapping(value = "prolonger-emprunt/{exemplaireId}")
     ExemplaireBean prolongeremprunt(@PathVariable("exemplaireId") Integer id);
+
+    @GetMapping(value = "/connexionUtilisateur/{pseudo}")
+    UtilisateurBean connexionUtilisateur(@PathVariable("pseudo") String pseudo);
 }

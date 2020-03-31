@@ -1,7 +1,6 @@
 package com.bibliotheque.web.configuration;
 
 import com.bibliotheque.web.Service.UtilisateurService;
-import com.bibliotheque.web.beans.UtilisateurBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,6 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+
     @Autowired
     UtilisateurService utilisateurService;
 
@@ -34,13 +34,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .invalidateHttpSession(true)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/modifier*/**").authenticated()
-                .antMatchers("/ajout*/**").authenticated()
-                .antMatchers("/supprimer*/**").authenticated()
+                .antMatchers("/**").authenticated()
                 .anyRequest().permitAll();
     }
-
-
 
 
     @Override

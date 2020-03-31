@@ -3,6 +3,7 @@ package com.bibliotheque.web.beans;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.management.relation.Role;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
@@ -115,9 +116,7 @@ public class UtilisateurBean implements Serializable, UserDetails {
     }
 
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return (Collection<? extends GrantedAuthority>) roles;
-    }
+    public Collection<? extends GrantedAuthority> getAuthorities() {return roles;}
 
     @Override
     public String getPassword() {

@@ -48,18 +48,19 @@ public class ViewController {
         return "liste-de-mes-emprunts";
     }
 
-    @GetMapping(value = "/prolongerEmprunt/${exemplaireId}")
-    public String affichageConfirmationProlongation(Model model, @PathVariable Integer id){
-        LivreBean livre = rechercherLivres.recupererUnLivre(id);
-        List<ExemplaireBean> exemplaireBeanList = livre.getExemplaireList();
-        model.addAttribute("exemplaire", exemplaireBeanList);
-        model.addAttribute("livre", livre);
-        return "/prolongerEmprunt";
-    }
+//    @GetMapping(value = "/prolongerEmprunt/${exemplaireId}")
+//    public String affichageConfirmationProlongation(Model model, @PathVariable Integer id){
+//        LivreBean livre = rechercherLivres.recupererUnLivre(id);
+//        List<ExemplaireBean> exemplaireBeanList = livre.getExemplaireList();
+//        model.addAttribute("exemplaire", exemplaireBeanList);
+//        model.addAttribute("livre", livre);
+//        return "/prolongerEmprunt";
+//    }
+
 
     @PostMapping(value = "/prolongerEmprunt")
     public String confirmationProlongation(@ModelAttribute("exemplaire") ExemplaireBean exemplaireBean){
-        rechercherLivres.prolongeremprunt(exemplaireBean.getId());
+//        rechercherLivres.prolongeremprunt(exemplaireBean.getId());
 
         return "liste-de-mes-emprunts";
     }
