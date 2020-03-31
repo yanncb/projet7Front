@@ -40,19 +40,15 @@ public class ViewController {
         return "livre";
     }
 
-    @GetMapping(value = "/liste-de-mes-emprunts")
+    @GetMapping(value = "/liste-de-mes-emprunts/{utilisateurId}")
     public String afficherMesEmprunts(Model model, Authentication authentication){
 //        UtilisateurBean utilisateurBean = (UtilisateurBean) authentication.getPrincipal();
 //        model.addAttribute("livres", rechercherLivres.rechercherTousLesLivresPourUtilisateur(utilisateurBean.getId()));
-////
-//
-//        List<ExemplaireBean> exemplaireBeanList = livre.getExemplaireList();
-//        model.addAttribute("exemplaire", exemplaireBeanList);
-//        model.addAttribute("livre", livre);
+
         return "liste-de-mes-emprunts";
     }
 
-    @GetMapping(value = "/prolongerEmprunt/${exemplaire.id}")
+    @GetMapping(value = "/prolongerEmprunt/${exemplaireId}")
     public String affichageConfirmationProlongation(Model model, @PathVariable Integer id){
         LivreBean livre = rechercherLivres.recupererUnLivre(id);
         List<ExemplaireBean> exemplaireBeanList = livre.getExemplaireList();

@@ -1,8 +1,13 @@
 package com.bibliotheque.web.beans;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 
-public class UtilisateurBean {
+public class UtilisateurBean implements Serializable, UserDetails {
 
 
     private int id;
@@ -107,5 +112,40 @@ public class UtilisateurBean {
                 ", mail='" + mail + '\'' +
                 ", motDePasse='" + motDePasse + '\'' +
                 '}';
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return (Collection<? extends GrantedAuthority>) roles;
+    }
+
+    @Override
+    public String getPassword() {
+        return motDePasse;
+    }
+
+    @Override
+    public String getUsername() {
+        return nom;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }

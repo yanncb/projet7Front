@@ -17,14 +17,14 @@ public interface MServiceBack {
     List<LivreBean> listeDesLivres();
 
     @GetMapping(value = "/livre/{id}")
-    LivreBean recupererUnLivre(@PathVariable("id") int id);
+    LivreBean recupererUnLivre(@PathVariable("id") Integer id);
 
     @GetMapping(value = "/recherche")
     List<LivreBean> rechercherLivres(@RequestParam("motCle") String motCle);
 
-    @GetMapping(value = "liste-de-mes-emprunts")
-    List<ExemplaireBean> rechercherTousLesLivresPourUtilisateur(@RequestParam("utilisateurId") Integer id);
+    @GetMapping(value = "liste-de-mes-emprunts/{utilisateurId}")
+    List<ExemplaireBean> rechercherTousLesLivresPourUtilisateur(@PathVariable("utilisateurId") Integer id);
 
-    @PostMapping(value = "prolonger-emprunt")
-    ExemplaireBean prolongeremprunt(int id);
+    @PostMapping(value = "prolonger-emprunt/{exemplaireId}")
+    ExemplaireBean prolongeremprunt(@PathVariable("exemplaireId") Integer id);
 }
