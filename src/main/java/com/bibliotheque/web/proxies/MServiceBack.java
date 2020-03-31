@@ -1,6 +1,5 @@
 package com.bibliotheque.web.proxies;
 
-import com.bibliotheque.web.Service.UtilisateurService;
 import com.bibliotheque.web.beans.ExemplaireBean;
 import com.bibliotheque.web.beans.LivreBean;
 import com.bibliotheque.web.beans.UtilisateurBean;

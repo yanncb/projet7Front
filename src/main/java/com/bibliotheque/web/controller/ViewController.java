@@ -40,10 +40,10 @@ public class ViewController {
         return "livre";
     }
 
-    @GetMapping(value = "/liste-de-mes-emprunts/{utilisateurId}")
+    @GetMapping(value = "/liste-de-mes-emprunts")
     public String afficherMesEmprunts(Model model, Authentication authentication){
-//        UtilisateurBean utilisateurBean = (UtilisateurBean) authentication.getPrincipal();
-//        model.addAttribute("livres", rechercherLivres.rechercherTousLesLivresPourUtilisateur(utilisateurBean.getId()));
+        UtilisateurBean utilisateurBean = (UtilisateurBean) authentication.getPrincipal();
+        model.addAttribute("livres", rechercherLivres.rechercherTousLesLivresPourUtilisateur(utilisateurBean.getId()));
 
         return "liste-de-mes-emprunts";
     }

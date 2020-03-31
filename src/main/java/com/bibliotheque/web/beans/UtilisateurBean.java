@@ -3,7 +3,6 @@ package com.bibliotheque.web.beans;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.management.relation.Role;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
@@ -24,6 +23,8 @@ public class UtilisateurBean implements Serializable, UserDetails {
     private String mail;
 
     private String motDePasse;
+
+    private int numCarte;
 
     private List<RoleBean> roles;
 
@@ -102,9 +103,17 @@ public class UtilisateurBean implements Serializable, UserDetails {
         this.motDePasse = motDePasse;
     }
 
+    public int getNumCarte() {
+        return numCarte;
+    }
+
+    public void setNumCarte(int numCarte) {
+        this.numCarte = numCarte;
+    }
+
     @Override
     public String toString() {
-        return "Utilisateur{" +
+        return "UtilisateurBean{" +
                 "id=" + id +
                 ", nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
@@ -112,11 +121,14 @@ public class UtilisateurBean implements Serializable, UserDetails {
                 ", numeroDeTelephone='" + numeroDeTelephone + '\'' +
                 ", mail='" + mail + '\'' +
                 ", motDePasse='" + motDePasse + '\'' +
+                ", numCarte=" + numCarte +
                 '}';
     }
 
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {return roles;}
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return roles;
+    }
 
     @Override
     public String getPassword() {

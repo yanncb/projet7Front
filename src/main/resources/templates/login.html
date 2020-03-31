@@ -4,23 +4,25 @@
     <meta charset="UTF-8">
     <title>Login</title>
 </head>
-<body>
+<div>
 <div th:insert="header.html"/>
+<div class="container" style="margin-top:5%">
 
 <h1>S'identifier</h1>
-<th:form method="POST" modelAttribute="utilisateur" action="/login">
 
-    <th:input type="text" path="username" id="username" class="form-control form-control-sm mb-3"
-              placeholder="Pseudo"/>
-
-    <th:input type="password" path="password" id="password" class="form-control form-control-sm mb-3"
-              placeholder="Mot De Passe"/>
+    <form th:action="@{/login}" method="post">
+        <label>Utilisateur :</label>
+        <input type="text" name="pseudo" path="username" id="username" th:value="${username}"/>
+        <label>Mot de passe :</label>
+        <input type="password" name="password" path="password" id="password" th:value="${password}"/>
+    </form>
+    <button class="btn btn-primary">Let's Go </button>
 
 
     <input type="submit" class="btn btn-success" value="Valider"/>
     <a class="btn btn-danger" href="/">Cancel</a>
-</th:form>
-</div>
 
+</div>
+</div>
 </body>
 </html>
