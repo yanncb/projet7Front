@@ -9,12 +9,13 @@ import java.util.List;
 
 public class UtilisateurBean implements Serializable, UserDetails {
 
-
     private int id;
+
+    private String prenom;
 
     private String nom;
 
-    private String prenom;
+    private String motDePasse;
 
     private String adresse;
 
@@ -22,9 +23,7 @@ public class UtilisateurBean implements Serializable, UserDetails {
 
     private String mail;
 
-    private String motDePasse;
-
-    private int numCarte;
+    private String numCarte;
 
     private List<RoleBean> roles;
 
@@ -86,7 +85,6 @@ public class UtilisateurBean implements Serializable, UserDetails {
         this.numeroDeTelephone = numeroDeTelephone;
     }
 
-
     public String getMail() {
         return mail;
     }
@@ -103,11 +101,11 @@ public class UtilisateurBean implements Serializable, UserDetails {
         this.motDePasse = motDePasse;
     }
 
-    public int getNumCarte() {
+    public String getNumCarte() {
         return numCarte;
     }
 
-    public void setNumCarte(int numCarte) {
+    public void setNumCarte(String numCarte) {
         this.numCarte = numCarte;
     }
 
@@ -137,7 +135,7 @@ public class UtilisateurBean implements Serializable, UserDetails {
 
     @Override
     public String getUsername() {
-        return nom;
+        return numCarte;
     }
 
     @Override

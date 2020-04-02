@@ -25,7 +25,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .disable()
                 .authenticationProvider(getProvider())
                 .formLogin()
+//                .passwordParameter("motDePasse")
+//                .usernameParameter()
                 .loginPage("/login")
+                .loginProcessingUrl("/login")
                 .defaultSuccessUrl("/").failureUrl("/login?error=loginError")
                 .and()
                 .logout()
@@ -35,7 +38,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/**").authenticated()
+//                .antMatchers("/**").authenticated()
+                .antMatchers("/**").permitAll()
+
                 .anyRequest().permitAll();
     }
 

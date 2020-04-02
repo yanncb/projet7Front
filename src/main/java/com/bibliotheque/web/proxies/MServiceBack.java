@@ -4,10 +4,7 @@ import com.bibliotheque.web.beans.ExemplaireBean;
 import com.bibliotheque.web.beans.LivreBean;
 import com.bibliotheque.web.beans.UtilisateurBean;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,6 +26,9 @@ public interface MServiceBack {
     @PostMapping(value = "prolonger-emprunt/{exemplaireId}")
     ExemplaireBean prolongeremprunt(@PathVariable("exemplaireId") Integer id);
 
-    @GetMapping(value = "/connexionUtilisateur/{pseudo}")
-    UtilisateurBean connexionUtilisateur(@PathVariable("pseudo") String pseudo);
+    @GetMapping(value = "/connexionUtilisateur/{numCarte}")
+    UtilisateurBean connexionUtilisateur(@PathVariable("numCarte") String numCarte);
+
+    @PostMapping(value = "/ajout-utilisateur")
+    UtilisateurBean ajoutUtilisateur(@RequestBody UtilisateurBean utilisateurBean);
 }
