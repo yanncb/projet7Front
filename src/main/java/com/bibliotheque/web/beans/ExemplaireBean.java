@@ -1,5 +1,7 @@
 package com.bibliotheque.web.beans;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class ExemplaireBean {
@@ -9,6 +11,8 @@ public class ExemplaireBean {
     private Date dateDemprunt;
     private boolean prolongerEmprunt;
     private int nbDispo;
+
+    private Date dateDeRetour;
 
     private LivreBean livre;
     private BibliothequeBean bibliotheque;
@@ -76,6 +80,14 @@ public class ExemplaireBean {
 
     public void setNbDispo(int nbDispo) {
         this.nbDispo = nbDispo;
+    }
+
+    public Date getDateDeRetour() {
+        return dateDeRetour;
+    }
+
+    public void setDateDeRetour(Date dateDeRetour) {
+        this.dateDeRetour = dateDeRetour;
     }
 
     @Override

@@ -20,20 +20,20 @@
                 <th>Prolongation ?</th>
             </tr>
             </thead>
-<!--            <tbody>-->
-<!--            <tr th:each="livre:${livreBeanList}" th:each="exemplaire : ${exemplaireBeanList}">-->
-<!--                <td><a th:href="@{/livre/{id}(id=${livre.id})}" th:text="${livre.titre}"></a></td>-->
-<!--                <td th:text="${livre.auteur}"></td>-->
-<!--                <td th:text="${exemplaire.dateDemprunt}"></td>-->
-<!--                <td th:text="${exemplaire.prolongerEmprunt}"></td>-->
+            <tbody>
+            <tr th:each="exemplaire : ${exemplaires}">
+                <td><a th:href="@{/livre/{id}(id=${exemplaire.livre.id})}" th:text="${exemplaire.livre.titre}"></a></td>
+                <td th:text="${exemplaire.livre.auteur}"></td>
+                <td th:text="${exemplaire.dateDemprunt}"></td>
+                <td th:text="${exemplaire.prolongerEmprunt}"></td>
             <td><a href="/prolongerEmprunt/${exemplaire.id}" class="btn btn-success">Prolonger l'emprunt</a> </td>
-<!--            <button type="submit" th:value="/prolongerEmprunt" name="prolongation">Prolonger la duree du pret </button> </td>&lt;!&ndash;            </tr>&ndash;&gt;-->
-<!--            </tbody>-->
+<!--            <button type="submit" th:value="/prolongerEmprunt" name="prolongation">Prolonger la duree du pret </button> </tr>-->
+            </tbody>
         </table>
     </div>
-<!--    <div th:if="${livreBeanList.isEmpty()}">-->
-<!--        <p>Vous n'avez aucun livre, venez à la bibliotheque en prendre de nouveaux.</p>-->
-<!--    </div>-->
+    <div th:if="${exemplaires.isEmpty()}">
+        <p>Vous n'avez aucun livre, venez à la bibliotheque en prendre de nouveaux.</p>
+    </div>
 </div>
 
 </body>
