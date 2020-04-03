@@ -37,10 +37,16 @@ public class ViewController {
 
     @GetMapping(value = "/livre/{id}")
     public String afficherLivreParId(Model model, @PathVariable int id) {
-        LivreBean livre = rechercherLivres.recupererUnLivre(id);
-        List<ExemplaireBean> exemplaireList = livre.getExemplaireList();
+        int nbExemplaires = 0;
 
-        model.addAttribute("exemplaire", exemplaireList);
+        LivreBean livre = rechercherLivres.recupererUnLivre(id);
+
+        for (ExemplaireBean exemplaire :  livre.getExemplaireList()) {
+            if (!exemplaire.isPret()){
+                nbExemplaires++;
+            }
+        }
+        model.addAttribute("nbExemplaires", nbExemplaires);
         model.addAttribute("livre", livre);
         return "livre";
     }
@@ -48,9 +54,8 @@ public class ViewController {
     @GetMapping(value = "/liste-de-mes-emprunts")
     public String afficherMesEmprunts(Model model, Authentication authentication){
         UtilisateurBean utilisateurBean = (UtilisateurBean) authentication.getPrincipal();
-        List<ExemplaireBean> exemplaireBean = rechercherLivres.rechercherTousLesLivresPourUtilisateur(utilisateurBean.getId());
-        model.addAttribute("exemplaires", exemplaireBean);
-
+        List<LivreBean> livreBeans = rechercherLivres.rechercherTousLesLivresPourUtilisateur(utilisateurBean.getId());
+       //TODO faire for each
         return "liste-de-mes-emprunts";
     }
 

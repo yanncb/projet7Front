@@ -21,7 +21,7 @@
                     <tr th:href="@{/details-livre/{id}(id=${livre.id})}" th:each="livre : ${livre}">
                         <td th:text="${livre.titre}"></td>
                         <td th:text="${livre.auteur}"></td>
-                        <td th:each="exemplaire : ${exemplaire}" th:text="${livre.exemplaire.nbDispo}"></td>
+<!--                        <td th:text="${nbExemplaires}"></td>-->
                     </tr>
                 </tbody>
             </table>

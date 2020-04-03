@@ -10,7 +10,6 @@ public class ExemplaireBean {
     private boolean pret;
     private Date dateDemprunt;
     private boolean prolongerEmprunt;
-    private int nbDispo;
 
     private Date dateDeRetour;
 
@@ -74,14 +73,6 @@ public class ExemplaireBean {
         this.prolongerEmprunt = prolongerEmprunt;
     }
 
-    public int getNbDispo() {
-        return nbDispo;
-    }
-
-    public void setNbDispo(int nbDispo) {
-        this.nbDispo = nbDispo;
-    }
-
     public Date getDateDeRetour() {
         return dateDeRetour;
     }
@@ -97,7 +88,6 @@ public class ExemplaireBean {
                 ", pret=" + pret +
                 ", dateDemprunt=" + dateDemprunt +
                 ", prolongerEmprunt=" + prolongerEmprunt +
-                ", nbDispo=" + nbDispo +
                 '}';
     }
 }

@@ -9,9 +9,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 @Service
 public class UtilisateurServiceImpl implements UtilisateurService {
 
@@ -34,8 +31,6 @@ public class UtilisateurServiceImpl implements UtilisateurService {
         String password = utilisateur.getMotDePasse();
         String encryptedPassword = passwordEncoder.encode(password);
         utilisateur.setMotDePasse(encryptedPassword);
-//        Role utilisateurRole = roleRepository.findByRolNom("MEMBRE");
-//        utilisateur.setRoles(new ArrayList<Role>(Arrays.asList(utilisateurRole)));
         mServiceBack.ajoutUtilisateur(utilisateur);
     }
 }
