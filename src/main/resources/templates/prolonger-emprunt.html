@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Prolonger emprunt</title>
+</head>
+<div>
+    <div th:insert="header.html"/>
+    <div class="container" style="margin-top:5%">
+
+        <h1>Information sur le livre : </h1>
+        <form>
+        <p th:text="${livre.titre}"></p>
+        <p th:text="${livre.auteur}"></p>
+
+        <p th:each="exemplaire : ${livre.exemplaireList}">
+        <td th:text="${exemplaire.dateDemprunt}"></td>
+        <td th:text="${exemplaire.dateRetour}"></td>
+        <td th:text="${exemplaire.prolongerEmprunt}"></td>
+        </p>
+
+        <p>Voulez vous prolonger votre emprunt ?</p>
+
+        <button type="submit" value="valider" class="btn btn-success">Valider</button>
+        <a class="btn btn-danger" href="/">Cancel</a>
+        </form>
+
+    </div>
+</div>
+</body>
+</html>
