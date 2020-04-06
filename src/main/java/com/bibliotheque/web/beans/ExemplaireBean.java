@@ -1,7 +1,6 @@
 package com.bibliotheque.web.beans;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class ExemplaireBean {
@@ -11,11 +10,13 @@ public class ExemplaireBean {
     private Date dateDemprunt;
     private boolean prolongerEmprunt;
 
-    private Date dateDeRetour;
-
     private LivreBean livre;
     private BibliothequeBean bibliotheque;
     private UtilisateurBean utilisateur;
+
+    private LocalDate dateRetour;
+
+
 
     public LivreBean getLivre() {
         return livre;
@@ -73,12 +74,12 @@ public class ExemplaireBean {
         this.prolongerEmprunt = prolongerEmprunt;
     }
 
-    public Date getDateDeRetour() {
-        return dateDeRetour;
+    public LocalDate getDateRetour() {
+        return dateRetour;
     }
 
-    public void setDateDeRetour(Date dateDeRetour) {
-        this.dateDeRetour = dateDeRetour;
+    public void setDateRetour(LocalDate dateRetour) {
+        this.dateRetour = dateRetour;
     }
 
     @Override

@@ -7,33 +7,41 @@
 <body>
 <div th:insert="header.html"/>
 
-    <h1>Liste des livres</h1>
+<h1>Liste des livres</h1>
 
-    <div class="cstyle">
-        <table class="table listTableDeco">
-            <thead>
-            <tr>
-                <th>Titre </th>
-                <th>Nom de l'Auteur</th>
-                <th>Date de l'emprunt</th>
-                <th>La date d'emprunt est prolongée</th>
-                <th>Prolongation ?</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="exemplaire : ${exemplaires}">
-                <td><a th:href="@{/livre/{id}(id=${exemplaire.livre.id})}" th:text="${exemplaire.livre.titre}"></a></td>
-                <td th:text="${exemplaire.livre.auteur}"></td>
-                <td th:text="${exemplaire.dateDemprunt}"></td>
-                <td th:text="${exemplaire.prolongerEmprunt}"></td>
-            <td><a href="/prolongerEmprunt/${exemplaire.id}" class="btn btn-success">Prolonger l'emprunt</a> </td>
-<!--            <button type="submit" th:value="/prolongerEmprunt" name="prolongation">Prolonger la duree du pret </button> </tr>-->
-            </tbody>
-        </table>
-    </div>
-    <div th:if="${exemplaires.isEmpty()}">
-        <p>Vous n'avez aucun livre, venez à la bibliotheque en prendre de nouveaux.</p>
-    </div>
+<div class="cstyle">
+    <table class="table listTableDeco">
+        <thead>
+        <tr>
+            <th>Titre</th>
+            <th>Nom de l'Auteur</th>
+            <th>Date de l'emprunt</th>
+            <th>La date d'emprunt est prolongée</th>
+            <th>Prolongation ?</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="livre : ${livreBeans}">
+            <td><a th:href="@{/livre/{id}(id=${livre.id})}" th:text="${livre.titre}"></a></td>
+            <td th:text="${livre.auteur}"></td>
+            <td th:text="${livre.exemplaireList}"></td>
+
+        <tr th:each="exemplaire : ${livre.exemplaireList}">
+            <td th:text="${exemplaire.dateDemprunt}"></td>
+            <td th:text="${exemplaire.prolongerEmprunt}"></td>
+
+            <td><a href="/prolongerEmprunt/${exemplaire.id}" class="btn btn-success">Prolonger l'emprunt</a></td>
+            <!--            <button type="submit" th:value="/prolongerEmprunt" name="prolongation">Prolonger la duree du pret </button> </tr>-->
+        </tr>
+        </tr>
+        </tbody>
+
+        <!--            <div th:if="${livre.isEmpty()}">-->
+        <!--                <p>Vous n'avez aucun livre, venez à la bibliotheque en prendre de nouveaux.</p>-->
+        <!--            </div>-->
+    </table>
+</div>
+
 </div>
 
 </body>
