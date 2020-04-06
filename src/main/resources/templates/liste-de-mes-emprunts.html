@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml"   xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Mes emrpunts</title>
@@ -16,6 +16,7 @@
             <th>Titre</th>
             <th>Nom de l'Auteur</th>
             <th>Date de l'emprunt</th>
+            <th>Date de retour</th>
             <th>La date d'emprunt est prolongée</th>
             <th>Prolongation ?</th>
         </tr>
@@ -24,21 +25,20 @@
         <tr th:each="livre : ${livreBeans}">
             <td><a th:href="@{/livre/{id}(id=${livre.id})}" th:text="${livre.titre}"></a></td>
             <td th:text="${livre.auteur}"></td>
-            <td th:text="${livre.exemplaireList}"></td>
 
-        <tr th:each="exemplaire : ${livre.exemplaireList}">
+        <p th:each="exemplaire : ${livre.exemplaireList}">
             <td th:text="${exemplaire.dateDemprunt}"></td>
+            <td th:text="${exemplaire.dateRetour}"></td>
             <td th:text="${exemplaire.prolongerEmprunt}"></td>
 
             <td><a href="/prolongerEmprunt/${exemplaire.id}" class="btn btn-success">Prolonger l'emprunt</a></td>
-            <!--            <button type="submit" th:value="/prolongerEmprunt" name="prolongation">Prolonger la duree du pret </button> </tr>-->
-        </tr>
+        </p>
         </tr>
         </tbody>
 
-        <!--            <div th:if="${livre.isEmpty()}">-->
-        <!--                <p>Vous n'avez aucun livre, venez à la bibliotheque en prendre de nouveaux.</p>-->
-        <!--            </div>-->
+                    <div th:if="${livreBeans.isEmpty()}">
+                        <p>Vous n'avez aucun livre, venez à la bibliotheque en prendre de nouveaux.</p>
+                    </div>
     </table>
 </div>
 
