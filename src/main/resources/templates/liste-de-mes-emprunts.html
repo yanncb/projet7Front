@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" xmlns="http://www.w3.org/1999/xhtml"   xmlns:th="http://www.thymeleaf.org">
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Mes emrpunts</title>
@@ -11,36 +11,43 @@
 
 <div class="cstyle">
     <table class="table listTableDeco">
-        <thead>
-        <tr>
-            <th>Titre</th>
-            <th>Nom de l'Auteur</th>
-            <th>Date de l'emprunt</th>
-            <th>Date de retour</th>
-            <th>La date d'emprunt est prolongée</th>
-            <th>Prolongation ?</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="livre : ${livreBeans}">
-            <td><a th:href="@{/livre/{id}(id=${livre.id})}" th:text="${livre.titre}"></a></td>
-            <td th:text="${livre.auteur}"></td>
+        <div class="row" style="margin-bottom: 10px; border:black solid 1px">
+            <th:block>
 
-        <p th:each="exemplaire : ${livre.exemplaireList}">
-            <td th:text="${exemplaire.dateDemprunt}"></td>
-            <td th:text="${exemplaire.dateRetour}"></td>
-            <td th:text="${exemplaire.prolongerEmprunt}"></td>
+                <div class="col-sm">Titre</div>
+                <div class="col-sm">Nom de l'Auteur</div>
+                <div class="col-sm">Date de l'emprunt</div>
+                <div class="col-sm">Date de retour</div>
+                <div class="col-sm">La date d'emprunt est prolongée</div>
+                <div class="col-sm">Prolongation ?</div>
+            </th:block>
+        </div>
+        <div class="row" style="margin-bottom: 10px">
 
-            <td><a th:href="@{/prolonger-emprunt/{id}(id=${exemplaire.id})}" class="btn btn-success">Prolonger l'emprunt</a></td>
-        </p>
-        </tr>
+            <th:block th:each="livre : ${livreBeans}">
+                <div class="col-sm"><a th:href="@{/livre/{id}(id=${livre.id})}" th:text="${livre.titre}"></a></div>
+                <div class="col-sm" th:text="${livre.auteur}"></div>
+
+                <th:block th:each="exemplaire : ${livre.exemplaireList}">
+                    <div class="col-sm" th:text="${exemplaire.dateDemprunt}"></div>
+                    <div class="col-sm" th:text="${exemplaire.dateRetour}"></div>
+                    <div class="col-sm" th:text="${exemplaire.prolongerEmprunt}"></div>
+
+
+                    <div class="col-sm"><a th:unless="${exemplaire.pret}"
+                                           th:href="@{/prolonger-emprunt/{id}(id=${exemplaire.id})}"
+                                           class="btn btn-success">Prolonger l'emprunt</a></div>
+
+
+                </th:block>
+            </th:block>
+        </div>
+
         </tbody>
-
-                    <div th:if="${livreBeans.isEmpty()}">
-                        <p>Vous n'avez aucun livre, venez à la bibliotheque en prendre de nouveaux.</p>
-                    </div>
+                            <div th:if="${livreBeans.isEmpty()}">
+                                <p>Vous n'avez aucun livre, venez à la bibliotheque en prendre de nouveaux.</p>
+                            </div>
     </table>
-</div>
 
 </div>
 

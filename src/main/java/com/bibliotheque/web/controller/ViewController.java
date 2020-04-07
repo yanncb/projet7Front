@@ -59,16 +59,18 @@ public class ViewController {
     @GetMapping(value = "/prolonger-emprunt/{exemplaireId}")
     public String affichageConfirmationProlongation(Model model, @PathVariable int exemplaireId){
         LivreBean livre = rechercherLivres.recupererUnLivre(exemplaireId);
-        model.addAttribute("livre", livre);
-        return "/prolonger-emprunt";
+        model.addAttribute("livres", livre);
+        rechercherLivres.prolongeremprunt(exemplaireId);
+
+        return "redirect:liste-de-mes-emprunts";
     }
 
 
-    @PostMapping(value = "/prolonger-emprunt")
-    public String confirmationProlongation(@ModelAttribute("exemplaire") ExemplaireBean exemplaireBean) {
-        rechercherLivres.prolongeremprunt(exemplaireBean.getId());
-        return "liste-de-mes-emprunts";
-    }
+//    @PostMapping(value = "/prolonger-emprunt")
+//    public String confirmationProlongation(@ModelAttribute("exemplaire") ExemplaireBean exemplaireBean) {
+//        rechercherLivres.prolongeremprunt(exemplaireBean.getId());
+//        return "liste-de-mes-emprunts";
+//    }
 
 
 }

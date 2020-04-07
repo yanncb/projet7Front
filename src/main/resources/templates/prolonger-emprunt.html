@@ -4,28 +4,39 @@
     <meta charset="UTF-8">
     <title>Prolonger emprunt</title>
 </head>
-<div>
-    <div th:insert="header.html"/>
-    <div class="container" style="margin-top:5%">
+<div th:insert="header.html"/>
+<div class="container" style="margin-top:5%">
 
-        <h1>Information sur le livre : </h1>
-        <form>
-        <p th:text="${livre.titre}"></p>
-        <p th:text="${livre.auteur}"></p>
+    <h1>Information sur le livre : </h1>
+    <form th:action="@{/prolonger-emprunt}" method="get">
+        <table>
+            <th:block th:each="livre : ${livres}">
 
-        <p th:each="exemplaire : ${livre.exemplaireList}">
-        <td th:text="${exemplaire.dateDemprunt}"></td>
-        <td th:text="${exemplaire.dateRetour}"></td>
-        <td th:text="${exemplaire.prolongerEmprunt}"></td>
-        </p>
+                <div class="row" style="margin-bottom: 10px">
+                    <div class="col-sm" th:text="${livre.titre}"></div>
+                    <div class="col-sm" th:text="${livre.auteur}"></div>
+                </div>
+            </th:block>
+            <th:block th:text="${exemplaire.dateDemprunt}">
 
-        <p>Voulez vous prolonger votre emprunt ?</p>
+                <div class="row" style="margin-bottom: 10px">
+                    <div class="col-sm" th:text="${exemplaire.dateDemprunt}"></div>
+                    <div class="col-sm" th:text="${exemplaire.dateRetour}"></div>
+                    <div class="col-sm" th:text="${exemplaire.prolongerEmprunt}"></div>
+                </div>
 
-        <button type="submit" value="valider" class="btn btn-success">Valider</button>
-        <a class="btn btn-danger" href="/">Cancel</a>
-        </form>
+            </th:block>
 
-    </div>
+
+            <!--        <p>Voulez vous prolonger votre emprunt ?</p>-->
+
+            <!--        <button type="submit" value="valider" class="btn btn-success">Valider</button>-->
+            <!--        <a class="btn btn-danger" href="/">Cancel</a>-->
+            <!--        </form>-->
+        </table>
+    </form>
 </div>
+
+
 </body>
 </html>
