@@ -10,22 +10,22 @@
     <h1>Information sur le livre : </h1>
     <form th:action="@{/prolonger-emprunt}" method="get">
         <table>
-            <th:block th:each="livre : ${livres}">
+<!--            <th:block th:each="livre : ${livres}">-->
 
-                <div class="row" style="margin-bottom: 10px">
-                    <div class="col-sm" th:text="${livre.titre}"></div>
-                    <div class="col-sm" th:text="${livre.auteur}"></div>
-                </div>
-            </th:block>
-            <th:block th:text="${exemplaire.dateDemprunt}">
+<!--                <div class="row" style="margin-bottom: 10px">-->
+<!--                    <div class="col-sm" th:text="${livre.titre}"></div>-->
+<!--                    <div class="col-sm" th:text="${livre.auteur}"></div>-->
+<!--                </div>-->
+<!--            </th:block>-->
+<!--            <th:block th:text="${exemplaire.dateDemprunt}">-->
 
-                <div class="row" style="margin-bottom: 10px">
-                    <div class="col-sm" th:text="${exemplaire.dateDemprunt}"></div>
-                    <div class="col-sm" th:text="${exemplaire.dateRetour}"></div>
-                    <div class="col-sm" th:text="${exemplaire.prolongerEmprunt}"></div>
-                </div>
+<!--                <div class="row" style="margin-bottom: 10px">-->
+<!--                    <div class="col-sm" th:text="${exemplaire.dateDemprunt}"></div>-->
+<!--                    <div class="col-sm" th:text="${exemplaire.dateRetour}"></div>-->
+<!--                    <div class="col-sm" th:text="${exemplaire.prolongerEmprunt}"></div>-->
+<!--                </div>-->
 
-            </th:block>
+<!--            </th:block>-->
 
 
             <!--        <p>Voulez vous prolonger votre emprunt ?</p>-->

@@ -29,14 +29,11 @@
                 <div class="col-sm" th:text="${livre.auteur}"></div>
 
                 <th:block th:each="exemplaire : ${livre.exemplaireList}">
-                    <div class="col-sm" th:text="${exemplaire.dateDemprunt}"></div>
+                    <div class="col-sm" th:text="${#dates.format(exemplaire.dateDemprunt, 'dd/MM/yyyy')}"></div>
                     <div class="col-sm" th:text="${exemplaire.dateRetour}"></div>
                     <div class="col-sm" th:text="${exemplaire.prolongerEmprunt}"></div>
 
-
-                    <div class="col-sm"><a th:unless="${exemplaire.pret}"
-                                           th:href="@{/prolonger-emprunt/{id}(id=${exemplaire.id})}"
-                                           class="btn btn-success">Prolonger l'emprunt</a></div>
+                    <div class="col-sm"><a th:if="${exemplaire.isProlongerEmprunt()== true}" th:href="@{/prolonger-emprunt/{id}(id=${exemplaire.id})}" class="btn btn-success">Prolonger l'emprunt</a></div>
 
 
                 </th:block>
