@@ -10,21 +10,11 @@ public class ExemplaireBean {
     private Date dateDemprunt;
     private boolean prolongerEmprunt;
 
-    private LivreBean livre;
     private BibliothequeBean bibliotheque;
     private UtilisateurBean utilisateur;
 
     private LocalDate dateRetour;
 
-
-
-    public LivreBean getLivre() {
-        return livre;
-    }
-
-    public void setLivre(LivreBean livre) {
-        this.livre = livre;
-    }
 
     public BibliothequeBean getBibliotheque() {
         return bibliotheque;

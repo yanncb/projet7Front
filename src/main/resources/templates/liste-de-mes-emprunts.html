@@ -8,45 +8,48 @@
 <div th:insert="header.html"/>
 
 <h1>Liste des livres</h1>
+<div class="container">
+    <div class="cstyle">
+        <table class="table listTableDeco">
+            <div class="row" style="margin-bottom: 10px; border:black solid 1px">
+                <th:text>
 
-<div class="cstyle">
-    <table class="table listTableDeco">
-        <div class="row" style="margin-bottom: 10px; border:black solid 1px">
-            <th:block>
-
-                <div class="col-sm">Titre</div>
-                <div class="col-sm">Nom de l'Auteur</div>
-                <div class="col-sm">Date de l'emprunt</div>
-                <div class="col-sm">Date de retour</div>
-                <div class="col-sm">La date d'emprunt est prolongée</div>
-                <div class="col-sm">Prolongation ?</div>
-            </th:block>
-        </div>
-        <div class="row" style="margin-bottom: 10px">
-
-            <th:block th:each="livre : ${livreBeans}">
-                <div class="col-sm"><a th:href="@{/livre/{id}(id=${livre.id})}" th:text="${livre.titre}"></a></div>
-                <div class="col-sm" th:text="${livre.auteur}"></div>
-
-                <th:block th:each="exemplaire : ${livre.exemplaireList}">
-                    <div class="col-sm" th:text="${#dates.format(exemplaire.dateDemprunt, 'dd/MM/yyyy')}"></div>
-                    <div class="col-sm" th:text="${exemplaire.dateRetour}"></div>
-                    <div class="col-sm" th:text="${exemplaire.prolongerEmprunt}"></div>
-
-                    <div class="col-sm"><a th:if="${exemplaire.isProlongerEmprunt()== true}" th:href="@{/prolonger-emprunt/{id}(id=${exemplaire.id})}" class="btn btn-success">Prolonger l'emprunt</a></div>
+                    <div class="col-sm">Titre</div>
+                    <div class="col-sm">Nom de l'Auteur</div>
+                    <div class="col-sm">Date de l'emprunt</div>
+                    <div class="col-sm">Date de retour</div>
+                    <div class="col-sm">La date d'emprunt est prolongée</div>
+                    <div class="col-sm">Prolongation ?</div>
+                </th:text>
+                <!--        </div>-->
+                <!--        <div class="row" style="margin-bottom: 10px">-->
 
 
-                </th:block>
-            </th:block>
-        </div>
+                <th:text th:each="livre : ${livreBeans}">
+                    <div class="col-sm"><a th:href="@{/livre/{id}(id=${livre.id})}" th:text="${livre.titre}"></a></div>
+                    <div class="col-sm" th:text="${livre.auteur}"></div>
 
-        </tbody>
-                            <div th:if="${livreBeans.isEmpty()}">
-                                <p>Vous n'avez aucun livre, venez à la bibliotheque en prendre de nouveaux.</p>
-                            </div>
-    </table>
+                    <th:text th:each="exemplaire : ${livre.exemplaireList}">
+                        <div class="col-sm" th:text="${#dates.format(exemplaire.dateDemprunt, 'yyyy-MM-dd')}"></div>
+                        <div class="col-sm" th:text="${exemplaire.dateRetour}"></div>
+                        <div class="col-sm" th:text="${exemplaire.prolongerEmprunt}"></div>
 
+                        <div class="col-sm"><a th:if="${!exemplaire.isProlongerEmprunt()}"
+                                               th:href="@{/prolonger-emprunt/{id}(id=${exemplaire.id})}"
+                                               class="btn btn-success">Prolonger l'emprunt</a></div>
+
+
+                    </th:text>
+                </th:text>
+            </div>
+
+            </tbody>
+            <div th:if="${livreBeans.isEmpty()}">
+                <p>Vous n'avez aucun livre, venez à la bibliotheque en prendre de nouveaux.</p>
+            </div>
+        </table>
+
+    </div>
 </div>
-
 </body>
 </html>

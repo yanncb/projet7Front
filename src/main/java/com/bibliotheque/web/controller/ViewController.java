@@ -62,15 +62,8 @@ public class ViewController {
         model.addAttribute("livres", livre);
         rechercherLivres.prolongeremprunt(exemplaireId);
 
-        return "redirect:liste-de-mes-emprunts";
+        return "redirect:/liste-de-mes-emprunts";
     }
-
-
-//    @PostMapping(value = "/prolonger-emprunt")
-//    public String confirmationProlongation(@ModelAttribute("exemplaire") ExemplaireBean exemplaireBean) {
-//        rechercherLivres.prolongeremprunt(exemplaireBean.getId());
-//        return "liste-de-mes-emprunts";
-//    }
 
 
 }
