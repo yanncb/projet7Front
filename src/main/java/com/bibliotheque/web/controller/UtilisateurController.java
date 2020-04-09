@@ -47,6 +47,6 @@ public class UtilisateurController {
     @PostMapping("/inscription")
     public String creationUtilisateur(@ModelAttribute("utilisateur") UtilisateurBean utilisateur) {
         utilisateurService.ajouterUtilisateur(utilisateur);
-        return "/inscriptionValidee";
+        return "/login";
     }
 }

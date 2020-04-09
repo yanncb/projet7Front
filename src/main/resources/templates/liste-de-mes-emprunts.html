@@ -12,7 +12,7 @@
     <div class="cstyle">
         <table class="table listTableDeco">
             <div class="row" style="margin-bottom: 10px; border:black solid 1px">
-                <th:text>
+                <th:text th:if="${!livreBeans.isEmpty()}">
 
                     <div class="col-sm">Titre</div>
                     <div class="col-sm">Nom de l'Auteur</div>
@@ -21,8 +21,6 @@
                     <div class="col-sm">La date d'emprunt est prolongée</div>
                     <div class="col-sm">Prolongation ?</div>
                 </th:text>
-                <!--        </div>-->
-                <!--        <div class="row" style="margin-bottom: 10px">-->
 
 
                 <th:text th:each="livre : ${livreBeans}">
