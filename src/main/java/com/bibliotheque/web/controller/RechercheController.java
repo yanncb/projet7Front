@@ -17,20 +17,6 @@ public class RechercheController {
     @Autowired
     private MServiceBack rechercherLivres;
 
-//    @RequestMapping("/recherche")
-//    public String recherche(Model model) {
-//        model.addAttribute("recherche", new Recherche());
-//        return "/recherche";
-//    }
-//
-//    @PostMapping("/recherche")
-//    public String recherche(Model model, @ModelAttribute("recherche") Recherche recherche) {
-//        List<LivreBean> livres = rechercherLivres.rechercherLivres(recherche);
-//
-//        model.addAttribute("resultat",livres);
-//        return "recherche";
-//    }
-
     @GetMapping("/recherche")
     public String rechercherUnLivre(Model model, @RequestParam(name = "motCle", defaultValue = "") String motCle){
 

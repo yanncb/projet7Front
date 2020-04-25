@@ -1,7 +1,6 @@
 package com.bibliotheque.web.controller;
 
 import com.bibliotheque.web.Service.ExemplaireService;
-import com.bibliotheque.web.beans.ExemplaireBean;
 import com.bibliotheque.web.beans.LivreBean;
 import com.bibliotheque.web.beans.UtilisateurBean;
 import com.bibliotheque.web.proxies.MServiceBack;
@@ -10,9 +9,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -57,7 +54,7 @@ public class ViewController {
     }
 
     @GetMapping(value = "/prolonger-emprunt/{exemplaireId}")
-    public String affichageConfirmationProlongation(Model model, @PathVariable int exemplaireId){
+    public String affichageConfirmationProlongation(Model model, @PathVariable int exemplaireId) {
         LivreBean livre = rechercherLivres.recupererUnLivre(exemplaireId);
         model.addAttribute("livres", livre);
         rechercherLivres.prolongeremprunt(exemplaireId);

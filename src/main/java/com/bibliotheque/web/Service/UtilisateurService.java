@@ -9,5 +9,9 @@ import java.util.List;
 @Service
 public interface UtilisateurService  extends UserDetailsService {
 
+    /**
+     * ajout utilisateur
+     * @param utilisateur ajoute un utilisateur
+     */
     void ajouterUtilisateur(UtilisateurBean utilisateur);
 }
